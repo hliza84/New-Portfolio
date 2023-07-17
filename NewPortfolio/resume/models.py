@@ -1,6 +1,5 @@
 """Module providingFunction printing python version."""
 from django.db import models
-from django.contrib.auth import get_user_model
 from django.core.validators import (
     MaxValueValidator,
     MinValueValidator,
@@ -10,13 +9,10 @@ from django.core.validators import (
 
 # Create your models here.
 
-User = get_user_model()
-
 
 class Person(models.Model):
     """Class representing a person"""
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.TextField(max_length=20)
     last_name = models.TextField(max_length=30)
 
