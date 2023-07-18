@@ -41,7 +41,6 @@ def home(request):
     contacttext = ContactText.objects.all()
     data = {
         "logo": "L|H",
-        "person": person,
         "personal_info": personal_info,
         "my_expertise": my_expertise,
         "Who_am_I": who_am_i,
@@ -53,6 +52,7 @@ def home(request):
         "social": social,
         "servicetext": servicetext,
         "services": services,
+        "person": person,
         "portfoliotext": portfoliotext,
         "testimonials": testimonials,
         "testperson": testperson,
