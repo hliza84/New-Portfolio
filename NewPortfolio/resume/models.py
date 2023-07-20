@@ -138,3 +138,10 @@ class ContactText(models.Model):
     """Class representing a contacttext"""
 
     text = models.TextField(max_length=300)
+
+
+class Message(models.Model):
+    full_name = models.CharField(max_length=60)
+    email = models.EmailField()
+    subject = models.CharField(max_length=150)
+    message = models.CharField(max_length=700)

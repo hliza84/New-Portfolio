@@ -17,12 +17,25 @@ from .models import (
     TestPerson,
     ContactText,
 )
+from .forms import MessageForm
 
 # Create your views here.
 
 
 def home(request):
+    status = 200
     """Function home."""
+
+    if request.method == "POST":
+        print("posted data")
+        print(request.POST)
+
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            status = 201
+        else:
+            print("invalid")
     person = Person.objects.all()
     personal_info = PersonalInfo.objects.all()
     my_expertise = MyExpertise.objects.all()
@@ -39,6 +52,7 @@ def home(request):
     testimonials = Testimonials.objects.all()
     testperson = TestPerson.objects.all()
     contacttext = ContactText.objects.all()
+    messageForm = MessageForm()
     data = {
         "logo": "L|H",
         "personal_info": personal_info,
@@ -57,5 +71,7 @@ def home(request):
         "testimonials": testimonials,
         "testperson": testperson,
         "contacttext": contacttext,
+        "messageForm": messageForm,
     }
-    return render(request, "index.html", context=data)
+
+    return render(request, "index.html", context=data, status=status)
