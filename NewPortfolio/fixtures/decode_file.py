@@ -1,4 +1,4 @@
-import chardet
+﻿import chardet
 
 # Detect the encoding of the file
 with open("resume.json", "rb") as file:
