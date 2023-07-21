@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import (
     Person,
     PersonalInfo,
@@ -27,15 +27,12 @@ def home(request):
     """Function home."""
 
     if request.method == "POST":
-        print("posted data")
-        print(request.POST)
-
+        print("POSTED DATA")
         form = MessageForm(request.POST)
         if form.is_valid():
+            print("NEED TO SAVE")
             form.save()
-            status = 201
-        else:
-            print("invalid")
+            return redirect("/")
     person = Person.objects.all()
     personal_info = PersonalInfo.objects.all()
     my_expertise = MyExpertise.objects.all()
