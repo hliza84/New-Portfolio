@@ -137,7 +137,7 @@ class TestPerson(models.Model):
 class ContactText(models.Model):
     """Class representing a contacttext"""
 
-    text = models.TextField(max_length=300)
+    text = models.TextField(max_length=500)
 
 
 class Message(models.Model):
