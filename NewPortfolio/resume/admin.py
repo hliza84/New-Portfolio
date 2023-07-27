@@ -18,6 +18,7 @@ from .models import (
     TestPerson,
     ContactText,
     Message,
+    PortfolioProject,
 )
 
 # Register your models here.
@@ -38,3 +39,4 @@ admin.site.register(Testimonials)
 admin.site.register(TestPerson)
 admin.site.register(ContactText)
 admin.site.register(Message)
+admin.site.register(PortfolioProject)

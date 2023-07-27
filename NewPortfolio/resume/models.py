@@ -145,3 +145,13 @@ class Message(models.Model):
     email = models.EmailField()
     subject = models.CharField(max_length=150)
     message = models.CharField(max_length=700)
+
+
+class PortfolioProject(models.Model):
+    name = models.CharField(max_length=60)
+    image = models.ImageField(upload_to="media")
+    short_desc = models.CharField(max_length=50)
+    description = models.CharField(max_length=150)
+    category = models.CharField(max_length=50)
+    client = models.CharField(max_length=100)
+    url = models.URLField()

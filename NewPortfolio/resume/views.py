@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404
 from .models import (
     Person,
     PersonalInfo,
@@ -16,6 +17,7 @@ from .models import (
     Testimonials,
     TestPerson,
     ContactText,
+    PortfolioProject,
 )
 from .forms import MessageForm
 
@@ -50,6 +52,7 @@ def home(request):
     testperson = TestPerson.objects.all()
     contacttext = ContactText.objects.all()
     messageForm = MessageForm()
+    portfolioProject = PortfolioProject.objects.all()
     data = {
         "logo": "L|H",
         "personal_info": personal_info,
@@ -69,6 +72,13 @@ def home(request):
         "testperson": testperson,
         "contacttext": contacttext,
         "messageForm": messageForm,
+        "portfolioProject": portfolioProject,
+
     }
 
     return render(request, "index.html", context=data, status=status)
+
+
+def portfolio_project(request, pk):
+    project = get_object_or_404(PortfolioProject, pk=pk)
+    return render(request, "portfolio-details.html", context={"project": project})
