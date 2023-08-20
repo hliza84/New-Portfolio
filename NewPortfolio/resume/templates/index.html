@@ -3,8 +3,12 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column align-items-center justify-content-center">
     <h1>Hi,</h1> 
-    <h1>I'm {{person.0.first_name}} {{person.0.last_name}}!</h1>
-    <h2> {{my_expertise.0.job_title}} | {{my_expertise.1.job_title}}</h2>
+    {% for p in person %}
+    <h1>I'm {{p.first_name}} {{p.last_name}}!</h1>
+    {% endfor %}
+    {% for m in my_expertise %}
+    <h2> {{m.job_title}}</h2>
+    {% endfor %} 
     <a href="#about" class="btn-get-started scrollto"><i class="bi bi-chevron-double-down"></i></a>
   </section><!-- End Hero -->
 
@@ -13,7 +17,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="#hero">{{logo}}</a></h1>
+        <h1><a href="#hero"><img src="{% static "assets/img/favicon.ico" %}"></a></h1>
       </div>
 
       <nav id="navbar" class="navbar">
@@ -38,55 +42,34 @@
       <div class="container">
 
         <div class="row no-gutters">
+         
           <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
           <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
             <div class="content d-flex flex-column justify-content-center">
                 <div class="section-title">
-                    <h2>About me</h2>
+                  <h2>About me</h2>
                 </div>
-                    <p>{{contacttext.1.text}}</p>
+                  {% for c in contacttext %} 
+                    <p>{{c.text}}</p>
                     <br>
-                    <div class="section-title">
-                    <h2>Harmony of hardworking and perseverance</h2>
-                </div>
-              <p>{{contacttext.2.text}}</p>
+                  {% endfor %}    
+
               <div class="row">
+                 {% for d in Dark_text %}
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-emoji-smile"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="{{Dark_text.0.value}}" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>{{Dark_text.0.name}}</strong></p>
+                   
+                    <span data-purecounter-start="0" data-purecounter-end="{{d.value}}" data-purecounter-duration="1" class="purecounter"></span>
+                    <p><strong>{{d.name}}</strong></p>
                   </div>
                 </div>
 
-                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="bi bi-journal-richtext"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="{{Dark_text.2.value}}" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>{{Dark_text.2.name}}</strong></p>
-                  </div>
-                </div>
-
-                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="bi bi-clock"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="{{Dark_text.1.value}}" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>{{Dark_text.1.name}}</strong></p>
-                  </div>
-                </div>
-
-                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="bi bi-award"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="{{Dark_text.3.value}}" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>{{Dark_text.3.name}}</strong></p>
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
+            </div>
             </div><!-- End .content-->
           </div>
         </div>
-
       </div>
     </section><!-- End About Section -->
 
@@ -100,72 +83,31 @@
 
         <div class="row skills-content">
 
-          <div class="col-lg-6">
-
+          <div class="col-lg-12">
+{% for s in Skills %}
             <div class="progress">
-              <span class="skill">{{Skills.0.name}} <i class="val">{{Skills.0.value}}%</i></span>
+              <span class="skill">{{s.name}} <i class="val">{{s.value}}%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="{{Skills.0.value}}" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="{{s.value}}" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
+             
             </div>
-
-            <div class="progress">
-              <span class="skill">{{Skills.1.name}} <i class="val">{{Skills.1.value}}%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="{{Skills.1.value}}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">{{Skills.2.name}} <i class="val">{{Skills.2.value}}%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="{{Skills.2.value}}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill">{{Skills.3.name}} <i class="val">{{Skills.3.value}}%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="{{Skills.3.value}}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">{{Skills.4.name}}<i class="val">{{Skills.4.value}}%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="{{Skills.4.value}}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">{{Skills.5.name}} <i class="val">{{Skills.5.value}}%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="{{Skills.5.value}}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
+ {% endfor %}
+      </div> 
     </section><!-- End Skills Section -->
 
     <!-- ======= Resume Section ======= -->
     <section id="resume" class="resume section-bg">
       <div class="container">
-
+{% for w in Who_am_I %}
         <div class="section-title">
           <h2>Resume</h2>
-          <p>{{Who_am_I.0.summary_text}}</p>
+          <p>{{w.summary_text}}</p>
         </div>
-
+{% endfor %}
         <div class="row">
           <div class="col-lg-6">
+            
             <h3 class="resume-title">Additional Education</h3>
             <div class="resume-item pb-0">
               
@@ -176,42 +118,26 @@
               </ul>
               </p>
             </div>
-
             <h3 class="resume-title">Education</h3>
+            {% for edu in Education %}
             <div class="resume-item">
-              <h4>{{Education.0.degree}}</h4>
-              <h5>{{Education.0.date}}</h5>
-              <p>{{Education.0.description}}</p>
+              <h4>{{edu.degree}}</h4>
+              <h5>{{edu.date}}</h5>
+              <p>{{edu.description}}</p>
             </div>
-            <div class="resume-item">
-              <h4>{{Education.0.degree}}</h4>
-              <h5>{{Education.0.date}}</h5>
-              <p>{{Education.0.description}}</p>
-            </div>
+{% endfor %}
           </div>
           <div class="col-lg-6">
             <h3 class="resume-title">Professional Experience</h3>
+            {% for exp in Expertise %}
             <div class="resume-item">
-              <h4>{{Expertise.0.job_title}}</h4>
-              <h5>{{Expertise.0.job_date}}-{% if Expertise.0.is_current %} Present
-                {% else %} {{Expertise.0.end_date}}{% endif %}</h5>
-              <p><em>{{Expertise.0.job_description}} </em></p>
+              <h4>{{exp.job_title}}</h4>
+              <h5>{{exp.job_date}}-{% if exp.is_current %} Present
+                {% else %} {{exp.end_date}}{% endif %}</h5>
+              <p><em>{{exp.job_description}} </em></p>
               <p>
             </div>
-            <div class="resume-item">
-              <h4>{{Expertise.1.job_title}}</h4>
-              <h5>{{Expertise.1.job_date}}-{% if Expertise.1.is_current %} Present
-                {% else %} {{Expertise.1.end_date}}{% endif %}</h5>
-              <p><em>{{Expertise.1.job_description}}</em></p>
-            </div>
-            <div class="resume-item">
-                <h4>{{Expertise.2.job_title}}</h4>
-                <h5>{{Expertise.2.job_date}}-{% if Expertise.2.is_current %} Present
-                  {% else %} {{Expertise.2.end_date}}{% endif %}</h5>
-                <p><em>{{Expertise.2.job_description}} </em></p>
-                <p>
-              </div>
-          </div>
+{% endfor %}
         </div>
 
       </div>
@@ -222,43 +148,23 @@
       <div class="container">
 
         <div class="section-title">
+          {% for serv in servicetext %}
           <h2>Services</h2>
-          <p>{{servicetext.0.text}}</p>
+          <p>{{serv.text}}</p>
+          {% endfor %}
         </div>
 
         <div class="row">
+          {% for service in services %}
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4 class="title"><a href="">{{services.0.name}}</a></h4>
-              <p class="description">{{services.0.desription}}</p>
+              <h4 class="title"><a href="">{{service.name}}</a></h4>
+              <p class="description">{{service.desription}}</p>
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="">{{services.1.name}}</a></h4>
-              <p class="description">{{services.1.desription}}</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href="">{{services.2.name}}</a></h4>
-              <p class="description">{{services.2.desription}}</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="">{{services.3.name}}</a></h4>
-              <p class="description">{{services.3.desription}}</p>
-            </div>
-          </div>
-
+{% endfor %}
         </div>
 
       </div>
@@ -270,7 +176,9 @@
 
         <div class="section-title">
           <h2>Portfolio</h2>
-          <p>{{portfoliotext.0.text}}</p>
+          {% for ptext in portfoliotext %}
+          <p>{{ptext.text}}</p>
+          {% endfor %}
         </div>
 
         <div class="row">
@@ -282,12 +190,12 @@
           </div>
         </div>
 
-        <div class="row portfolio-container">
+        <div class="row portfolio-container" >
             {% for pproject in portfolioProject %}
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="col-lg-2 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
               <img src="{{pproject.image.url}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
+              <div class="portfolio-info" id = "port">
                 <h4>{{pproject.short_description}}</h4>
                
               </div>
@@ -308,7 +216,9 @@
 
         <div class="section-title">
           <h2>Testimonials</h2>
-          <p>{{testimonials.0.text}}</p>
+          {% for ttext in testimonials %}
+          <p>{{ttext.text}}</p>
+          {% endfor %}
         </div>
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -392,19 +302,20 @@
 
         <div class="section-title">
           <h2>Contact</h2>
-          <p>{{contacttext.0.text}}</p>
+          <p>Contact me today to discuss how we can work together effectively.</p>
         </div>
 
         <div class="row">
 
           <div class="col-lg-4 col-md-4">
             <div class="contact-about">
-              <h3>{{logo}}</h3>
+             <img src="{% static "assets/img/favicon.ico" %}"><br><br><br>
               <div class="social-links">
                 <a href="{{social.0.link}}" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="{{social.1.link}}" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="{{social.3.link}}" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                <a href="{{social.2.link}}" target="_blank" class="github"><i class="bi bi-github"></i></a>
+                <a href="{{social.2.link}}" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                <a href="{{social.3.link}}" target="_blank" class="github"><i class="bi bi-github"></i></a>
+           
               </div>
             </div>
           </div>
@@ -413,16 +324,16 @@
             <div class="info">
               <div class="d-flex align-items-center">
                 <i class="bi bi-geo-alt"></i>
-                <p>{{personal_info.0.address}}</p>
+                <p id="adress">{{personal_info.0.address}}</p>
               </div>
 
               <div class="d-flex align-items-center mt-4">
-                <i class="bi bi-envelope"></i><a href="mailto:{{personal_info.0.email}}"><h6>hovhannisyanliza84@gmail.com</h6></a>
+                <i class="bi bi-envelope"></i><a href="mailto:{{personal_info.0.email}}"><h7>hovhannisyanliza84@gmail.com</h7></a>
                 
               </div>
 
               <div class="d-flex align-items-center mt-4">
-                <i class="bi bi-phone"></i><a href="tel:{{personal_info.0.phone}}"><h6>(+374)93-314-606</h6></a>
+                <i class="bi bi-phone"></i><a href="tel:{{personal_info.0.phone}}"><h7>(+374)93-314-606</h7></a>
                 
               </div>
 
@@ -445,7 +356,7 @@
                 <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
               </div>
                      
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><button type="submit" class="btn btn-outline-danger">Send Message</button></div>
              
               
             </form>

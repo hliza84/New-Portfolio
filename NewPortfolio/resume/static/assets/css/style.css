@@ -738,6 +738,9 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+#port{width: 400px;
+    height: 400px;}
+
 .portfolio .portfolio-item {
   margin-bottom: 30px;
 }
@@ -867,7 +870,7 @@ section {
 }
 
 .portfolio-details .portfolio-details-slider img {
-  width: 100%;
+  width: 50%;
 }
 
 .portfolio-details .portfolio-details-slider .swiper-pagination {
@@ -894,6 +897,7 @@ section {
 }
 
 .portfolio-details .portfolio-info {
+  width: 400px;
   padding: 30px;
   box-shadow: 0px 0 30px rgba(44, 73, 100, 0.08);
 }
@@ -917,6 +921,7 @@ section {
 }
 
 .portfolio-details .portfolio-description {
+  width: 400px;
   padding-top: 30px;
 }
 
@@ -1067,7 +1072,7 @@ section {
 }
 
 .contact .info {
-  color: #5a656e;
+  color: #d43076;
 }
 
 .contact .info i {
@@ -1139,7 +1144,7 @@ section {
   background: #d43076;
   border: 0;
   padding: 10px 24px;
-  color: #fff;
+  color: #d43076;
   transition: 0.4s;
   border-radius: 50px;
 }
