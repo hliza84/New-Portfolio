@@ -1182,3 +1182,9 @@ section {
   text-align: center;
   font-size: 13px;
 }
+
+#butt {
+  background: #d43076;
+  border-color: #d43076;
+  color: #ffffff;
+}
